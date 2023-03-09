@@ -47,7 +47,7 @@ function varargout = GUI_SigTreatmentMagnets(varargin)
 
 % Edit the above text to modify the response to help GUI_SigTreatmentMagnets
 
-% Last Modified by GUIDE v2.5 06-Jul-2022 16:43:57
+% Last Modified by GUIDE v2.5 07-Mar-2023 15:07:39
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -517,6 +517,7 @@ function pb_preProcessing_Callback(hObject, eventdata, handles)
     
     %Disable and enable buttons -------------------------------------------
     set(handles.et_downsample,'Enable','off');
+    set(handles.et_cTp,'Enable','off');
     set(handles.et_noise,'Enable','off');
     set(handles.et_nM,'Enable','off');
     set(handles.et_nCh,'Enable','off');
@@ -999,7 +1000,12 @@ function pb_Initialize_Callback(hObject, eventdata, handles)
     set(handles.pb_Initialize,'Enable','off');
     set(handles.pb_preProcessing,'Enable','on');
     set(handles.et_downsample,'Enable','on');
-    set(handles.et_downsample,'String','50');
+    % set(handles.et_downsample,'String','50');
+    % Added
+    set(handles.et_downsample,'String',handles.et_sF.String);
+    set(handles.et_cTp,'Enable','on');
+    set(handles.et_cTp,'String', '1');
+    
     set(handles.cb_rest,'Enable','on');
     set(handles.pm_scaling,'Enable','on');
     set(handles.cb_AddArtifact,'Enable','on');
@@ -1047,6 +1053,30 @@ function pm_mag1Ch1_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+
+function et_cTp_Callback(hObject, eventdata, handles)
+% hObject    handle to et_cTp (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of et_cTp as text
+%        str2double(get(hObject,'String')) returns contents of et_cTp as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function et_cTp_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to et_cTp (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');

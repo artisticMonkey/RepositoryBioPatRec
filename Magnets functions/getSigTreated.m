@@ -39,7 +39,8 @@ function sigTreated = getSigTreated(recSession, handles)
     recSession.nMag    = str2double(get(handles.et_nMag,'String'));
     
     tdata = recSession.tdata;
-    cTp = 0.5;
+    cTp = str2num(handles.et_cTp.String);
+    %cTp = 1;%0.5; %0.66667; %0.4;
     nM = recSession.nM;
     if recSession.nMag == 0
         recSession.nR = size(recSession.tdata,1)/150;
