@@ -1,0 +1,1 @@
+This folder holds scripts that help you get started with development. Or troubleshoot
