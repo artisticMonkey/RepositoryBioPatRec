@@ -1,0 +1,19 @@
+function [Xtest, XtestOut, X, Xout] = BilinearModelNovelUser(Y, Yout, M, X, Xout, Z, W)
+N = size(Y,1)/M;
+K = size(Y,2);
+idx_train = 1:N:(N*M);
+idx_test = setdiff(1:N*M,idx_train);
+Ym = Y(idx_train,:)'; % K x M
+Ymvt = reshape(Ym',[M*K, 1]);
+Xm = X(:,idx_train);
+I = size(Z,1);
+J = size(X,1);
+WXvt = reshape((W*Xm)', [M*K, I]);
+z = pinv(WXvt)*Ymvt;
+Wvt = reshape(W',[J*K, I]);
+Wzvt = reshape((Wvt*z)',[K, J]);
+Xtest = pinv(Wzvt)*Y(idx_test,:)';
+XtestOut = Yout(idx_test,:);
+X = [X, Xm];
+Xout = [Xout; Yout(idx_train,:)];
+end
