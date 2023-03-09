@@ -1,0 +1,24 @@
+function [trOut, tOut, patRec] = gestureDistrictOuts(trainOut, testOut, patRec)
+temp = zeros(size(trainOut,1),2);
+temp(:,1) = sum(trainOut(:,[1 2 3]),2);
+temp(:,2) = sum(trainOut(:,[4 5 6 7]),2);
+% temp(:,1) = sum(transOuts(:,[1 2 7 8]),2);    
+% temp(:,2) = sum(transOuts(:,[3 4 5 6]),2);
+% temp = zeros(size(trainOut,1),5);
+% temp(:,1:4) = trainOut(:,4:7);
+% temp(:,5) = sum(trainOut(:,1:3),2);
+trOut = temp;
+temp = zeros(size(testOut,1),2);
+temp(:,1) = sum(testOut(:,[1 2 3]),2);
+temp(:,2) = sum(testOut(:,[4 5 6 7]),2);
+% temp(:,1) = sum(transTOuts(:,[1 2 7 8]),2);    
+% temp(:,2) = sum(transTOuts(:,[3 4 5 6]),2);
+% temp = zeros(size(testOut,1),5);
+% temp(:,1:4) = testOut(:,4:7);
+% temp(:,5) = sum(testOut(:,1:3),2);
+tOut = temp;
+patRec.mov = {'Hand','Wrist','Rest'}';
+patRec.nM = 3;
+% patRec.mov = {'Ex','Fl','Pr','Su','Other','Rest'}';
+% patRec.nM = 6;
+end
