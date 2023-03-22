@@ -154,6 +154,12 @@ function sigTreated = PreProcessingMagnets(handles)
     
 
     recSession.tdata = treatData;
+
+    if isfield(recSession,'labels')
+        l = recSession.labels;
+        l = reshape(l,[],1,recSession.nM);
+        recSession.tdata = cat(2,recSession.tdata,l);
+    end
     
     % Add the movements to the struct
 %     for i = 1:nM

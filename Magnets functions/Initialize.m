@@ -56,7 +56,7 @@ function recSession = Initialize(hObject,handles)
             set(eval(strcat('stdata.et_mag1Ch',num2str(i))),'Enable','on');
             set(eval(strcat('stdata.et_mag2Ch',num2str(i))),'Enable','on');
         end
-        for i = (nCh+1):9
+        for i = (nCh+1):15
             set(eval(strcat('stdata.et_mag1Ch',num2str(i))),'Enable','off');
             set(eval(strcat('stdata.et_mag2Ch',num2str(i))),'Enable','off');
         end
