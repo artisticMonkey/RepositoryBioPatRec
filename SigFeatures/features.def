@@ -1,20 +1,20 @@
 tmabs	  % Time: Mean absolute value
+tmabsTr   % transient mavs
 tmd       % Time: Median value
-tstd	  % Time: Standard deviation
-tvar	  % Time: Variance
-twl	  % Time: wave length
-trms	  % Time: RMS
-tzc	  % Time: Zero crossing
-tslpch2	  % Time: Slope changes
 tmax      % Time: Maximum value
 tmin      % Time: Minimum value
+twl	      % Time: wave length
 mslp  % Magnet: slope
 mlv   % Magnet: last value
 
 NOTE: Not all features are used constantly so
 some of them are left out to improve speed
 
-tmabsTr   % transient mavs
+tstd	  % Time: Standard deviation
+tvar	  % Time: Variance
+trms	  % Time: RMS
+tzc	  % Time: Zero crossing
+tslpch2	  % Time: Slope changes
 
 
 All features:
