@@ -22,7 +22,7 @@ function varargout = GUI_MagnetSelection(varargin)
 
 % Edit the above text to modify the response to help GUI_MagnetSelection
 
-% Last Modified by GUIDE v2.5 14-Mar-2023 15:27:30
+% Last Modified by GUIDE v2.5 21-Apr-2023 16:46:57
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -771,3 +771,60 @@ function et_mag2Ch15_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+
+function et_firstMagnet_Callback(hObject, eventdata, handles)
+% hObject    handle to et_firstMagnet (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of et_firstMagnet as text
+%        str2double(get(hObject,'String')) returns contents of et_firstMagnet as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function et_firstMagnet_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to et_firstMagnet (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function et_lastMagnet_Callback(hObject, eventdata, handles)
+% hObject    handle to et_lastMagnet (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of et_lastMagnet as text
+%        str2double(get(hObject,'String')) returns contents of et_lastMagnet as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function et_lastMagnet_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to et_lastMagnet (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pb_SequentialPairs.
+function pb_SequentialPairs_Callback(hObject, eventdata, handles)
+% hObject    handle to pb_SequentialPairs (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    muscle = nchoosek(str2double(get(handles.et_firstMagnet,'String')):str2double(get(handles.et_lastMagnet,'String')),2);
+    setappdata(0,'muscle',muscle);
+    guidata(hObject,handles);
+    close(GUI_MagnetSelection);
